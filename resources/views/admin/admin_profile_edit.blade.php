@@ -77,6 +77,7 @@
     </div>
 
 
+    {{-- menampilkan gambar yang akan di upload --}}
     <script type="text/javascript">
         $(document).ready(function() {
             $('#image').change(function(e) {

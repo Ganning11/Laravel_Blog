@@ -27,6 +27,7 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        //allert massage ketika login
         $request->session()->regenerate();
          $notification = array(
             'message' => 'User Login Successfully',
