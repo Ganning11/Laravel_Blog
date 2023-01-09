@@ -4,6 +4,7 @@
 <head>
 
     {{-- testing --}}
+    {{-- test --}}
 
     <meta charset="utf-8" />
     <title>Dashboard | Upcube - Admin & Dashboard Template</title>
