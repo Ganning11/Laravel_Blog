@@ -129,6 +129,14 @@
         @endif
     </script>
 
+
+    {{-- Untuk menggunakana fungsi bisa edit pada text box --}}
+    <!--tinymce js-->
+    <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }} "></script>
+
+    <!-- init js -->
+    <script src="{{ asset('backend/assets/js/pages/form-editor.init.js') }} "></script>
+
 </body>
 
 </html>
