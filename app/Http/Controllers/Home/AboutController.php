@@ -124,6 +124,12 @@ class AboutController extends Controller
      public function UpdateMultiImage(Request $request){
         $multi_image_id = $request->id;
 
+        //Untuk menghapus file dalam memori
+        $delete = MultiImage::findOrFail($multi_image_id);
+        $img = $delete->multi_image;
+        unlink($img);
+
+        //mengganti dan menambahkan url untuk file baru
         if ($request->file('multi_image')) {
             $image = $request->file('multi_image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();  // 3434343443.jpg
@@ -137,13 +143,29 @@ class AboutController extends Controller
 
             ]);
             $notification = array(
-            'message' => 'Multi Image Updated Successfully',
+            'message' => 'Image Updated Successfully',
             'alert-type' => 'success'
         );
 
         return redirect()->route('all.multi.image')->with($notification);
 
         }
+     }
+
+     public function DeleteMultiImage($id){
+
+        $multi = MultiImage::findOrFail($id);
+        $img = $multi->multi_image;
+
+        unlink($img);
+        MultiImage::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Image Delete Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
      }
 
 
