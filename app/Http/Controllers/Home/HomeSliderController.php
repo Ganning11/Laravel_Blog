@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\HomeSlide;
 use Image;
+//penting untuk menggunakan unlink
+use Illuminate\Support\Carbon;
 
 class HomeSliderController extends Controller
 {
@@ -18,6 +20,10 @@ class HomeSliderController extends Controller
     public function UpdateSlider(Request $request){
 
         $slide_id = $request->id;
+
+        $delete = Homeslide::findOrFail($slide_id);
+        $img = $delete->home_slide;
+        unlink($img);
 
         if ($request->file('home_slide')) {
             $image = $request->file('home_slide');
